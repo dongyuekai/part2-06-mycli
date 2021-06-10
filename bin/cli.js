@@ -2,6 +2,7 @@
 
 // 通过process可以访问到命令执行时的参数
 // 我们可以自定义编码来实现对命令帮助信息的格式化处理  工具有 commander 或 yargs
+const mainFn = require('..') // 这里默认会执行package.json里的main 也就是 lib/index.js
 const { program } = require('commander')
 
 // 利用commander自定义动作命令
@@ -23,18 +24,21 @@ const actionsMap = {
     ]
   }
 }
-// 02 利用遍历操作配合 program 来将多个命令的信息渲染出来
+// 02 执行命令 用遍历操作配合 program 来将多个命令的信息渲染出来
 Reflect.ownKeys(actionsMap).forEach((action) => {
   program
     .command(action)
     .alias(actionsMap[action].alias)
     .description(actionsMap[action].des)
     .action(() => {
-      console.log(action, '执行了........')
+      // console.log('process.argv---', process.argv)
+      let params = process.argv.slice(3)  // ['xx'] 值是放在数组里的
+      // console.log(params)
+      mainFn(action, params)
     })
 })
 
-// 03 演示
+// 03 演示 拦截 --help
 program.on('--help', () => {
   console.log('Examples: ')
   Reflect.ownKeys(actionsMap).forEach(action => {

@@ -2,9 +2,9 @@
   "name": "part2-06-mycli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
-    "dykcli": "./bin/cli.js"
+    "dykcli": "bin/cli.js"
   },
   "directories": {
     "lib": "lib"
