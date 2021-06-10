@@ -31,6 +31,13 @@ const questList = [
       }
       return false
     }
+  },
+  {
+    type: 'checkbox',  // 确认框
+    name: 'feature',
+    pageSize: 2,  // 一页放几个选项
+    message: '选择默认安装',
+    choices: ['webpack', 'vue', 'vueRouter', 'vuex', 'zce', 'NBA', 'CBA']
   }
 ]
 
