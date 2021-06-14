@@ -16,9 +16,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "commander": "^7.2.0",
     "inquirer": "^8.1.0",
+    "ncp": "^2.0.0",
     "ora": "^5.4.1"
   }
 }
